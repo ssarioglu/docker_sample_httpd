@@ -1,9 +1,10 @@
 FROM centos
 
-RUN yum update -y && yum install httpd httpd-tools php php-mysql -y
+RUN yum update -y && yum install httpd httpd-tools php -y
 
-COPY 
+RUN echo '<?php echo "I am running on: "; echo gethostname(); ?>' > /var/www/html/index.php
+
 
 EXPOSE  80
 
-CMD     ["/usr/sbin/httpd","-D","FOREGROUND
+CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
